@@ -14,6 +14,8 @@ app.get("/students", async (req, res) => {
   try {
     const students = JSON.parse(fs.readFileSync("alumnos.json"));
     res.status(200).json(students);
+
+    console.log("Students retrieved successfully");
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error getting students" });
@@ -33,6 +35,8 @@ app.get("/groups", async (req, res) => {
       });
 
     res.status(200).json(groups);
+
+    console.log("Groups retrieved successfully");
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error getting groups" });
@@ -82,6 +86,8 @@ app.post("/groups", async (req, res) => {
     });
 
     fs.writeFileSync("alumnos.json", JSON.stringify({ emails: newStudents }));
+
+    console.log("Group created successfully ", group);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Error creating group" });

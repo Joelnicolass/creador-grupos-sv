@@ -9,6 +9,27 @@ app.use(express.json());
 
 const port = process.env.PORT || 2001;
 
+// eliminar grupos (todos los archivos que empiezan por group-)
+
+app.delete("/groups", async (req, res) => {
+  try {
+    const groups = fs
+      .readdirSync("./")
+      .filter((file) => file.startsWith("group-"));
+
+    groups.forEach((group) => {
+      fs.unlinkSync(group);
+    });
+
+    res.status(200).json({ message: "Groups deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Error deleting groups" });
+  }
+
+  return;
+});
+
 // obtener alumnos (alumnos.json)
 app.get("/students", async (req, res) => {
   try {

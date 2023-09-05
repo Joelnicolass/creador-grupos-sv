@@ -9,7 +9,7 @@ app.use(express.json());
 
 const port = process.env.PORT || 2001;
 
-// eliminar grupos (todos los archivos que empiezan por group-)
+// eliminar grupos ( todos los archivos que empiezan por group-)
 
 app.delete("/groups", async (req, res) => {
   try {

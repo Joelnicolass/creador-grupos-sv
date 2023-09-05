@@ -1,0 +1,1 @@
+{ "verbose": true, "ext": "js, ejs, json", "ignore": ["**\\*.json"] }
